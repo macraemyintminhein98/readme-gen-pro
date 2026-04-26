@@ -4,111 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>README Gen Pro</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        body { font-family: sans-serif; }
-        .container { max-width: 800px; margin: 0 auto; padding: 2rem; }
-        input, textarea, button { width: 100%; padding: 0.75rem; margin-bottom: 1rem; border-radius: 0.375rem; border: 1px solid #d1d5db; }
-        button { background-color: #3b82f6; color: white; cursor: pointer; }
-        button:hover { background-color: #2563eb; }
-        #preview { background-color: #f3f4f6; padding: 1rem; border-radius: 0.375rem; min-height: 150px; white-space: pre-wrap; word-wrap: break-word; font-family: monospace; }
-        .stripe-btn { background-color: #6366f1; }
-        .stripe-btn:hover { background-color: #4f46e5; }
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1 class="text-4xl font-bold text-center mb-6">README Gen Pro</h1>
-        <p class="text-center text-lg mb-8">Craft your perfect GitHub README.md in minutes.</p>
-
-        <form id="readmeForm" class="space-y-4">
-            <div>
-                <label for="projectName" class="block text-sm font-medium text-gray-700">Project Name</label>
-                <input type="text" id="projectName" placeholder="My Awesome Project" required>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-xl max-w-md w-full text-center">
+        <h1 class="text-4xl font-bold mb-4 text-gray-800">README Gen Pro</h1>
+        <p class="text-lg text-gray-600 mb-6">Generate professional READMEs in seconds.</p>
+        <form action="#" method="POST">
+            <div class="mb-4">
+                <input type="url" id="repoUrl" name="repoUrl" placeholder="GitHub Repository URL" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
             </div>
-            <div>
-                <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-                <textarea id="description" rows="4" placeholder="A brief overview of your project..." required></textarea>
-            </div>
-            <div>
-                <label for="techStack" class="block text-sm font-medium text-gray-700">Tech Stack (comma-separated)</label>
-                <input type="text" id="techStack" placeholder="React, Node.js, MongoDB">
-            </div>
-            <div>
-                <label for="features" class="block text-sm font-medium text-gray-700">Key Features (comma-separated)</label>
-                <textarea id="features" rows="3" placeholder="User authentication, Real-time updates, RESTful API"></textarea>
-            </div>
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Generate README Preview</button>
+            <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200">
+                Generate README - Buy for $9.99
+            </button>
         </form>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">README Preview</h2>
-        <div id="preview" class="bg-gray-100 p-4 rounded-md text-gray-800">Your README will appear here...</div>
-
-        <button id="downloadBtn" class="mt-6 bg-green-500 hover:bg-green-700 stripe-btn">Download README.md (Stripe Checkout)</button>
+        <p class="text-xs text-gray-400 mt-6">Secured by Stripe</p>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('readmeForm');
-            const previewDiv = document.getElementById('preview');
-            const downloadBtn = document.getElementById('downloadBtn');
-
-            const generateReadme = () => {
-                const projectName = document.getElementById('projectName').value;
-                const description = document.getElementById('description').value;
-                const techStack = document.getElementById('techStack').value.split(',').map(s => s.trim()).filter(Boolean);
-                const features = document.getElementById('features').value.split(',').map(s => s.trim()).filter(Boolean);
-
-                let readmeContent = `# ${projectName || 'Your Project Name'}\n\n`;
-                readmeContent += `${description || 'A concise description of your project goes here.'}\n\n`;
-
-                if (techStack.length > 0) {
-                    readmeContent += `## 🚀 Technologies Used\n\n`;
-                    techStack.forEach(tech => {
-                        readmeContent += `- ${tech}\n`;
-                    });
-                    readmeContent += `\n`;
-                }
-
-                if (features.length > 0) {
-                    readmeContent += `## ✨ Features\n\n`;
-                    features.forEach(feature => {
-                        readmeContent += `- ${feature}\n`;
-                    });
-                    readmeContent += `\n`;
-                }
-                
-                readmeContent += `## 🤝 Contributing\n\nContributions are always welcome! Please read the [contributing guidelines](CONTRIBUTING.md) to know how to proceed.\n\n`;
-                readmeContent += `## 📝 License\n\nDistributed under the MIT License. See [LICENSE](LICENSE) for more information.\n\n`;
-                readmeContent += `## 📞 Contact\n\nYour Name - [email@example.com](mailto:email@example.com)\n`;
-                readmeContent += `Project Link: [https://github.com/yourusername/yourproject](https://github.com/yourusername/yourproject)\n`;
-
-                previewDiv.textContent = readmeContent;
-            };
-
-            form.addEventListener('input', generateReadme);
-            form.addEventListener('submit', (e) => { e.preventDefault(); generateReadme(); });
-
-            // Initial generation
-            generateReadme();
-
-            downloadBtn.addEventListener('click', () => {
-                // In a real app, this would trigger Stripe Checkout and then enable download.
-                // For this MVP, we'll simulate the download directly.
-                alert('Stripe Checkout integration would go here! Simulating download...');
-                const content = previewDiv.textContent;
-                const filename = (document.getElementById('projectName').value || 'README') + '.md';
-                const blob = new Blob([content], { type: 'text/markdown' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = filename;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-            });
-        });
-    </script>
 </body>
 </html>
