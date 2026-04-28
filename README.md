@@ -1,14 +1,18 @@
 # README Gen Pro
 
-Generate professional and feature-rich `README.md` files for your GitHub repositories instantly! Simply paste your GitHub repo URL, and our tool fetches public data to create a compelling README, ready to copy or download. Perfect for developers, open-source maintainers, and students.
+README Gen Pro is a micro-SaaS product designed to help developers quickly create professional and visually appealing GitHub README files. Choose from curated templates, customize with your project details, and instantly generate a ready-to-use Markdown file.
 
-## Features:
+## Features
 
-*   **Automated Generation**: Input a URL, get a formatted README.
-*   **Data-Driven**: Uses public repo data (description, language, stars, license).
-*   **Professional Templates**: High-quality, standardized output.
-*   **Easy Integration**: Copy to clipboard or download `.md` file (post-payment).
+-   **Curated Templates**: Access a variety of high-quality templates for different project types (libraries, APIs, portfolios, etc.).
+-   **Easy Customization**: Fill out a simple form to tailor the README content to your specific project.
+-   **Instant Markdown Generation**: Download optimized Markdown files ready for your GitHub repository.
+-   **One-time Payment**: Pay once and get unlimited access to all current and future templates.
 
-## Get Started:
+## Get Started
 
-Visit [GENERATED_PRODUCT_URL] to generate your first README!
+Visit [your-vercel-app-url.vercel.app](your-vercel-app-url.vercel.app) to start creating your perfect READMEs today!
+
+## Support
+
+For any questions or support, please contact [support@example.com](mailto:support@example.com).
