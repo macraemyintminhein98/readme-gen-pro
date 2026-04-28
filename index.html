@@ -6,22 +6,85 @@
     <title>README Gen Pro</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: sans-serif; }
+        .template-card-preview { height: 150px; overflow: hidden; position: relative; border: 1px solid #e0e0e0; border-radius: 8px; }
+        .template-card-preview::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(to top, white, transparent); }
     </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-xl max-w-md w-full text-center">
-        <h1 class="text-4xl font-bold mb-4 text-gray-800">README Gen Pro</h1>
-        <p class="text-lg text-gray-600 mb-6">Generate professional READMEs in seconds.</p>
-        <form action="#" method="POST">
-            <div class="mb-4">
-                <input type="url" id="repoUrl" name="repoUrl" placeholder="GitHub Repository URL" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-6 md:p-10">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2">README Gen Pro 👋</h1>
+            <p class="text-xl md:text-2xl text-gray-600">Craft perfect GitHub READMEs in minutes.</p>
+        </header>
+
+        <section id="templates" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <!-- Template Card 1 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-semibold mb-3">Basic Library README</h3>
+                <div class="template-card-preview bg-gray-50 p-3 text-sm text-gray-700 leading-relaxed mb-4">
+                    <!-- Placeholder for actual README content, rendered or screenshot -->
+                    <h1>My Awesome Library</h1>
+                    <p>A short description of what your library does.</p>
+                    <h2>Features</h2>
+                    <ul><li>Feature 1</li><li>Feature 2</li></ul>
+                    <h2>Installation</h2>
+                    <pre><code>npm install my-awesome-library</code></pre>
+                    <h2>Usage</h2>
+                </div>
+                <button onclick="location.href='./form.html?template=library'" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">Use This Template</button>
             </div>
-            <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200">
-                Generate README - Buy for $9.99
-            </button>
-        </form>
-        <p class="text-xs text-gray-400 mt-6">Secured by Stripe</p>
+
+            <!-- Template Card 2 (example) -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-semibold mb-3">API Project README</h3>
+                <div class="template-card-preview bg-gray-50 p-3 text-sm text-gray-700 leading-relaxed mb-4">
+                    <h1>My RESTful API</h1>
+                    <p>Documentation for my amazing API.</p>
+                    <h2>Endpoints</h2>
+                    <ul><li><code>/users</code></li><li><code>/products</code></li></ul>
+                    <h2>Authentication</h2>
+                    <p>Details about API key or OAuth.</p>
+                    <h2>Getting Started</h2>
+                    <pre><code>git clone</code></pre>
+                </div>
+                <button onclick="location.href='./form.html?template=api'" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">Use This Template</button>
+            </div>
+
+            <!-- Add more template cards here following the same structure -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-semibold mb-3">Portfolio Project README</h3>
+                <div class="template-card-preview bg-gray-50 p-3 text-sm text-gray-700 leading-relaxed mb-4">
+                    <h1>My Portfolio Project</h1>
+                    <p>A captivating description of what this project achieves.</p>
+                    <h2>Live Demo</h2>
+                    <p>[Link to Demo]</p>
+                    <h2>Technologies Used</h2>
+                    <ul><li>React</li><li>Node.js</li></ul>
+                    <h2>Features</h2>
+                </div>
+                <button onclick="location.href='./form.html?template=portfolio'" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">Use This Template</button>
+            </div>
+        </section>
+
+        <section id="pricing" class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Simple & Affordable</h2>
+            <p class="text-xl text-gray-700 mb-6">Get instant access to all templates for a one-time payment.</p>
+            <div class="bg-blue-600 inline-block px-8 py-4 rounded-lg shadow-lg">
+                <span class="text-4xl font-bold text-white">$2.99</span><span class="text-white text-lg"> / one-time</span>
+            </div>
+            <button id="checkoutButton" class="mt-6 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full text-lg shadow-md transition duration-300">Buy Now & Unlock All Templates</button>
+        </section>
+
+        <footer class="text-center text-gray-500 text-sm mt-10">
+            © 2023 README Gen Pro. Made with ❤️ for developers.
+        </footer>
     </div>
+    <script>
+      document.getElementById('checkoutButton').addEventListener('click', function() {
+        alert('Placeholder for Stripe Checkout integration.');
+        // In a real app, this would initiate a Stripe checkout session.
+      });
+    </script>
 </body>
 </html>
